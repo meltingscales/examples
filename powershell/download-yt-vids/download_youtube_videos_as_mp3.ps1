@@ -1,4 +1,6 @@
-get-content "videos.txt" | ForEach-Object {
+Push-Location "./media/"
+
+get-content "../links.txt" | ForEach-Object {
 
     if ("$_".Contains("#")) {
         Write-Host "Skipping comment $_";
@@ -16,3 +18,4 @@ get-content "videos.txt" | ForEach-Object {
 
 }
 
+Pop-Location
