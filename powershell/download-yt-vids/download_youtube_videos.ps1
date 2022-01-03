@@ -1,6 +1,6 @@
 Push-Location "./media/"
 
-get-content "../videos.txt" | ForEach-Object {
+get-content "../links.txt" | ForEach-Object {
 
     if ("$_".Contains("#")) {
         Write-Host "Skipping comment $_";
