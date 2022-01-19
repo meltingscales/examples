@@ -16,7 +16,11 @@ Push-Location "./media/"
 
 get-content "../links.txt" | ForEach-Object {
 
-    if ("$_".Substring(0, 1).Contains("#")) {
+    $parts = "$_".Split('#')
+    $url = $parts[0]
+
+    if ("$_".Substring(0, 1).Contains("#"))
+    {
         Write-Host "Skipping comment $_";
     }
     elseif ([string]::IsNullOrWhiteSpace("$_")) {
@@ -24,16 +28,13 @@ get-content "../links.txt" | ForEach-Object {
     }
     else {
 
-        parts = "$_".Split('#')
-        url = parts[0]
-
-        if (parts.Length -gt 1) {
-            write-host "Ignoring comment: " parts[1]
+        if ($parts.Length -gt 1) {
+            write-host "Ignoring comment after video: " $parts[1]
         }
 
-        write-host "downloading" $_ " as mp3"
+        write-host "downloading" $url
 
-        downloadMP3 $_
+        downloadMP3 $url
     }
 }
 
