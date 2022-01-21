@@ -1,3 +1,5 @@
+$defaultLinksFile='links.txt'
+
 function downloadMP3 {
     param (
         $url
@@ -13,7 +15,7 @@ function downloadVideo {
 }
 
 function ensureLinksFileExists {
-    if (!(test-path './links.txt')) {
+    if (!(test-path $defaultLinksFile)) {
         Write-Output 'https://www.youtube.com/watch?v=NkRcF8jJ_So' >> './links.txt'
     }
 }
@@ -25,7 +27,7 @@ function processVideoList {
 
     Push-Location "./media/"
 
-    get-content "../links.txt" | ForEach-Object {
+    get-content "../$defaultLinksFile" | ForEach-Object {
 
         $parts = "$_".Split('#')
         $url = $parts[0]
