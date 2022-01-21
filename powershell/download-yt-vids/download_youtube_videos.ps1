@@ -1,16 +1,6 @@
-function downloadMP3 {
-    param (
-        $url
-    )
-    python -m youtube_dl -x -k --audio-format mp3 $url   
-}
+Import-Module .\ytlib.psm1
 
-function downloadVideo {
-    param (
-        $url
-    )
-    python -m youtube_dl $url
-}
+ensureLinksFileExists
 
 Push-Location "./media/"
 
