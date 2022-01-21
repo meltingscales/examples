@@ -61,5 +61,4 @@ function processVideoList {
 
 }
 
-Export-ModuleMember -Function ensureLinksFileExists
-Export-ModuleMember -Function processVideoList
+Export-ModuleMember -Function ensureLinksFileExists, processVideoList

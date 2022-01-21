@@ -1,4 +1,4 @@
-Import-Module .\ytlib.psm1
+Import-Module '.\ytlib.psm1'
 
 ensureLinksFileExists
 
