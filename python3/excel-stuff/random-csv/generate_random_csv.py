@@ -3,7 +3,7 @@ import os
 
 count = 100
 
-csv_path = os.path.abspath("C:/users/furry/Desktop/daRandomCSV.csv")
+csv_path = os.path.abspath("./daRandomCSV.csv")
 
 
 # our RNG function
