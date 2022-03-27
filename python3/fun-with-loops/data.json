@@ -1,0 +1,34 @@
+{
+    "products": [
+        {
+            "id": 1,
+            "name": "potato1",
+            "hidden": true,
+            "ignore": true
+        },
+        {
+            "id": 2,
+            "name": "a bug",
+            "hidden": true,
+            "ignore": false
+        },
+        {
+            "id": 3,
+            "name": "big ass potato",
+            "hidden": false,
+            "ignore": true
+        },
+        {
+            "id": 4,
+            "name": "gucci bag",
+            "hidden": false,
+            "ignore": false
+        },
+        {
+            "id": 5,
+            "name": "big ass sword",
+            "hidden": false,
+            "ignore": false
+        }
+    ]
+}
