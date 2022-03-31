@@ -8,7 +8,8 @@ import (
 	"strings"
 )
 
-var csv_path = "daCSV.csv"
+var csvInputPath = "daCSV.csv"
+var csvOutputPath = "daCSV.output.csv"
 
 type CSVDatum struct {
 	Row1 int64
@@ -20,7 +21,7 @@ func isX(someStr string) bool {
 	return (strings.Split(someStr, "")[0]) == "x"
 }
 
-func parseLineToCSVDatum(line string) CSVDatum {
+func parseCSVDatum(line string) CSVDatum {
 	var split = strings.Split(line, ",")
 
 	r1, err := strconv.ParseInt(split[0], 0, 8)
@@ -34,16 +35,19 @@ func parseLineToCSVDatum(line string) CSVDatum {
 	r3 := isX(split[2])
 
 	return CSVDatum{r1, r2, r3}
+}
 
+func serializeCSVDatum(datum CSVDatum) string {
+	return fmt.Sprintf("%s,%s,%s", "lol", "i am", "lazy")
 }
 
 func main() {
 
 	fmt.Println("wow, you want sum CSV files bro?")
 
-	fmt.Printf("Going to open '%s'...\n", csv_path)
+	fmt.Printf("Going to open '%s'...\n", csvInputPath)
 
-	readFile, err := os.Open(csv_path)
+	readFile, err := os.Open(csvInputPath)
 
 	if err != nil {
 		fmt.Println(err)
@@ -55,6 +59,7 @@ func main() {
 
 	var csvData []CSVDatum
 
+	//read file into list of our struct
 	i := 0
 	for fileScanner.Scan() {
 		fmt.Printf("line %d: ", i)
@@ -64,13 +69,19 @@ func main() {
 
 		//skip header line
 		if i != 0 {
-			csvData = append(csvData, parseLineToCSVDatum(line))
+			csvData = append(csvData, parseCSVDatum(line))
 		}
 		i += 1
 	}
 
+	readFile.Close()
+
+	//print out our list of struct
 	for index, element := range csvData {
 		fmt.Printf("index = %d\n", index)
 		fmt.Printf("element = %s\n", element)
 	}
+
+	//write our struct back into a new CSV
+
 }
