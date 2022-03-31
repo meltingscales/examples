@@ -2,9 +2,7 @@ package main
 
 import "github.com/gin-gonic/gin"
 
-// var csv_path = "./myfile.csv"
-
-func main() {
+func hostDaAPI() {
 
 	r := gin.Default()
 
