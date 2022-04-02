@@ -83,5 +83,11 @@ func main() {
 	}
 
 	//write our struct back into a new CSV
+	//TODO NYI
+
+	//open csvOutputPath
+	// for datum in csvData
+	//		write(serializeCSVDatum(datum)+"\n", csvOutputPath)
+	//close csvOutputPath
 
 }
