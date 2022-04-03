@@ -2,14 +2,15 @@ package main
 
 import (
 	"bufio"
+	"errors"
 	"fmt"
 	"os"
 	"strconv"
 	"strings"
 )
 
-var csvInputPath = "daCSV.csv"
-var csvOutputPath = "daCSV.output.csv"
+var csvInputPath = "./daCSV.csv"
+var csvOutputPath = "./daCSV.output.csv"
 
 type CSVDatum struct {
 	Row1 int64
@@ -17,8 +18,15 @@ type CSVDatum struct {
 	isX  bool
 }
 
-func isX(someStr string) bool {
+func XYtoBool(someStr string) bool {
 	return (strings.Split(someStr, "")[0]) == "x"
+}
+
+func boolToXY(someBool bool) string {
+	if someBool {
+		return "x"
+	}
+	return "y"
 }
 
 func parseCSVDatum(line string) CSVDatum {
@@ -32,22 +40,58 @@ func parseCSVDatum(line string) CSVDatum {
 
 	r2 := split[1]
 
-	r3 := isX(split[2])
+	r3 := XYtoBool(split[2])
 
 	return CSVDatum{r1, r2, r3}
 }
 
 func serializeCSVDatum(datum CSVDatum) string {
-	return fmt.Sprintf("%s,%s,%s", "lol", "i am", "lazy")
+	return fmt.Sprintf(
+		"%d,%s,%s",
+		datum.Row1, datum.Row2, boolToXY(datum.isX),
+	)
 }
 
-func main() {
+func getCSVDatumHeader() string {
+	return "row1,row2,isXY\n"
+}
 
-	fmt.Println("wow, you want sum CSV files bro?")
+func writeCSVDataIntoFile(path string, data []CSVDatum) {
+	//write our struct back into a new CSV
 
-	fmt.Printf("Going to open '%s'...\n", csvInputPath)
+	file, err := os.Open(path)
 
-	readFile, err := os.Open(csvInputPath)
+	if !(errors.Is(err, os.ErrNotExist)) {
+		//if file exists, delete it
+		file.Close()
+		os.Remove(path)
+		println("Deleting " + path + " as it exists.")
+	}
+
+	file, err = os.Create(path)
+
+	writer := bufio.NewWriter(file)
+
+	//write header first
+	writer.WriteString(getCSVDatumHeader())
+
+	for _, element := range data {
+		writer.WriteString(serializeCSVDatum(element))
+		writer.WriteString("\n")
+	}
+
+	writer.Flush()
+
+	file.Close()
+}
+
+func readCSVFileIntoData(path string) []CSVDatum {
+
+	// fmt.Println("wow, you want sum CSV files bro?")
+
+	// fmt.Printf("Going to open '%s'...\n", path)
+
+	readFile, err := os.Open(path)
 
 	if err != nil {
 		fmt.Println(err)
@@ -76,18 +120,21 @@ func main() {
 
 	readFile.Close()
 
+	return csvData
+}
+
+func main() {
+
+	var csvData = readCSVFileIntoData(csvInputPath)
+
 	//print out our list of struct
 	for index, element := range csvData {
 		fmt.Printf("index = %d\n", index)
 		fmt.Printf("element = %s\n", element)
 	}
 
-	//write our struct back into a new CSV
-	//TODO NYI
+	writeCSVDataIntoFile(csvOutputPath, csvData)
 
-	//open csvOutputPath
-	// for datum in csvData
-	//		write(serializeCSVDatum(datum)+"\n", csvOutputPath)
-	//close csvOutputPath
+	fmt.Println("Wrote to " + csvOutputPath)
 
 }
