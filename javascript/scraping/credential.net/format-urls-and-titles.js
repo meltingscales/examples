@@ -53,3 +53,18 @@ Cloud Computing Fundamentals: Storing & Managing Cloud Data
 Cloud Computing Fundamentals: Cloud Virtualization & Data Centers
 Cloud Computing Fundamentals: Introduction
 Cloud Computing Fundamentals: Considerations`
+
+
+var exampleiframe=`<iframe
+src="https://skillsoft.digitalbadges.skillsoft.com/embed/e1e46801-9e00-443e-9187-196c6e272a28"
+width="800"
+height="600"
+frameborder="0"
+allowfullscreen>
+</iframe>`
+
+
+
+///end of data section
+
+//TODO you lazy sussy bastard...finish this later
