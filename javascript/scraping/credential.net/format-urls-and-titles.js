@@ -54,8 +54,43 @@ Cloud Computing Fundamentals: Cloud Virtualization & Data Centers
 Cloud Computing Fundamentals: Introduction
 Cloud Computing Fundamentals: Considerations`
 
+///end of data section
 
-var exampleiframe=`<iframe
+var splitURLs = theURLS.split("\n")
+var splitTitles = theTitles.split("\n")
+
+// process uuids
+function processUUIDsFromURLS(someURLS) {
+
+    //input:
+    //  https://www.credential.net/d202cc5d-486f-42e4-a240-ba92f3ec67b2
+
+    //ideal:
+    //  https://skillsoft.digitalbadges.skillsoft.com/embed/e1e46801-9e00-443e-9187-196c6e272a28
+
+    var ret = []
+
+    for (let i in someURLS) {
+        var url = someURLS[i]
+        var splitURL = url.split('/')
+        ret.push(
+            'https://skillsoft.digitalbadges.skillsoft.com/embed/'
+            + splitURL[splitURL.length - 1]
+        )
+    }
+    return ret
+}
+
+//fix dem urls
+splitURLs = processUUIDsFromURLS(splitURLs)
+
+if (splitTitles.length != splitURLs.length) {
+    throw `Titles and URLs are not the same length!`
+} else {
+    console.log("Titles and URLs are the same length :)")
+}
+
+var exampleiframe = `<iframe
 src="https://skillsoft.digitalbadges.skillsoft.com/embed/e1e46801-9e00-443e-9187-196c6e272a28"
 width="800"
 height="600"
@@ -63,8 +98,40 @@ frameborder="0"
 allowfullscreen>
 </iframe>`
 
+var fmtMarker = '!DALINK!'
 
+var fmtiframe = `<iframe
+src="${fmtMarker}"
+width="800"
+height="600"
+frameborder="0"
+allowfullscreen>
+</iframe>`
 
-///end of data section
+var theHTMLResult = "";
 
-//TODO you lazy sussy bastard...finish this later
+theHTMLResult += `<section class="credentialdotnet">
+
+<style>
+section.credentialdotnet {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 5px;
+}
+</style>
+
+`
+
+for (let i = 0; i < splitURLs.length; i++) {
+    const url = splitURLs[i];
+    const title = splitTitles[i];
+
+    // someString += "<h3>" + title + "</h3>\n"
+    theHTMLResult += (fmtiframe.replace(fmtMarker, url)) + "\n"
+    theHTMLResult += '\n'
+
+}
+
+theHTMLResult += `</section>`
+
+console.log(theHTMLResult)
