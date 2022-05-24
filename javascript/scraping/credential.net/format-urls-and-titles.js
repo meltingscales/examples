@@ -90,10 +90,13 @@ if (splitTitles.length != splitURLs.length) {
     console.log("Titles and URLs are the same length :)")
 }
 
+var width='200'
+var height='250'
+
 var exampleiframe = `<iframe
 src="https://skillsoft.digitalbadges.skillsoft.com/embed/e1e46801-9e00-443e-9187-196c6e272a28"
-width="800"
-height="600"
+width="${width}"
+height="${height}"
 frameborder="0"
 allowfullscreen>
 </iframe>`
@@ -102,8 +105,8 @@ var fmtMarker = '!DALINK!'
 
 var fmtiframe = `<iframe
 src="${fmtMarker}"
-width="800"
-height="600"
+width="${width}"
+height="${height}"
 frameborder="0"
 allowfullscreen>
 </iframe>`
