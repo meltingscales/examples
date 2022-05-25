@@ -4,6 +4,30 @@
 
 https://sourceforge.net/projects/gnucobol/
 
+
+## le install from sauce
+
+https://gnucobol.sourceforge.io/
+
+get da deps! (depends on ur platform, maybe change versions `:3c`)
+
+    sudo apt install libgmp3-dev libdb5.3-dev
+
+    etc etc
+
+https://gnucobol.sourceforge.io/faq/index.html
+
+    tar xvf gnucobol*.xz
+
+    pushd gnucobol*/
+
+    ./configure
+
+    make check
+
+    make install
+
+
 ## COBOL Tutorial : Learn COBOL in One Video
 
 <https://www.youtube.com/watch?v=TBs7HXI76yU>
