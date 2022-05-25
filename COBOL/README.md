@@ -23,9 +23,11 @@ https://gnucobol.sourceforge.io/faq/index.html
 
     ./configure
 
-    make check
+    sudo make clean 
+    
+    sudo make check
 
-    make install
+    sudo make install
 
 
 ## COBOL Tutorial : Learn COBOL in One Video
