@@ -1,4 +1,4 @@
-package datastructures.simpleMaps;
+package datastructures.map;
 
 import java.util.HashMap;
 import java.util.Map;
