@@ -5,6 +5,7 @@ A way for me to stack laptops :D
 ## Materials
 
 2x (60mm  x 420mm x 20mm ) wood - these are the sides
+
 1x (420mm x 20mm  x 360mm) wood - this is the top
 
 ## Steps
