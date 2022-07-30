@@ -1,7 +1,6 @@
 import React from "react";
-import exp from "constants";
 
-const MovieCard = (props:any)=>{
+const MovieCard = (props: any) => {
     return <div className={'movie'}>
         <div>
             <p>
@@ -19,5 +18,4 @@ const MovieCard = (props:any)=>{
     </div>
 }
 
-
-export  default MovieCard;
+export default MovieCard;

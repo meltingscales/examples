@@ -1,7 +1,7 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import './App.css'
 import SearchIcon from './search.svg'
-import MovieCard from "./MovieCard";
+import MovieGallery from "./MovieGallery";
 
 const REACT_APP_OMDB_API_KEY = process.env.REACT_APP_OMDB_API_KEY
 
@@ -27,9 +27,11 @@ const CodeBlock = (props: any) => {
     </>
 }
 
-
-
 const App = () => {
+
+    const [moviesResponse, setMoviesResponse] = useState<any>([])
+
+    const defaultSearch = 'iron man'
 
 
     const searchMovies = async (title: string) => {
@@ -38,11 +40,11 @@ const App = () => {
 
         console.log(data)
 
-        return 'todo lol'
+        setMoviesResponse(data)
     }
 
     useEffect(() => {
-        // var movieResponse = searchMovies('iron man')
+        var movieResponse = searchMovies(defaultSearch)
     }, [])
 
     return (
@@ -50,23 +52,20 @@ const App = () => {
             <h1>MovieLand</h1>
             <div className={"search"}>
                 <input
-                    placeholder={'search for movies'}
-                    value={'Iron man'}
+                    placeholder={'Search for movies'}
+                    value={defaultSearch}
                     onChange={() => {
                     }}/>
                 <img
                     src={SearchIcon}
-                    alt={"Search for a movie"}
+                    alt={"Search for movies"}
                     onClick={() => {
                     }}
                 />
             </div>
-            <div className={'container'}>
-                <MovieCard {...sampleMovie}/>
-                <MovieCard {...sampleMovie}/>
-                <MovieCard {...sampleMovie}/>
-                <MovieCard {...sampleMovie}/>
-            </div>
+
+            <MovieGallery movies={moviesResponse.Search}/>
+
         </div>
     )
 }
