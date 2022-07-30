@@ -1,24 +1,48 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
-function App() {
+const Person = (props: any) => {
+
+
+    let eltName = <h1>Name: {props.name}</h1>;
+    let eltLastName = <h2>Last Name: {props.lastName}</h2>;
+
+
+    if (props.nameHidden) {
+        eltName = <h1>Name is hidden :)</h1>
+        eltLastName = <h2>Last name is hidden :)</h2>
+    }
+
+
+    return (
+        <>
+            {eltName}
+            {eltLastName}
+            <h2>Age: 24</h2>
+        </>
+    )
+}
+
+const App = () => {
+
+    const name = 'Henry'
+    const lname = 'Post'
+
+    const randFloat = Math.random()
+
+    const isNameHidden = randFloat >= 0.5;
+
+    const personProps = {
+        name: name,
+        lastName: lname,
+        nameHidden: isNameHidden
+    }
+
     return (
         <div className="App">
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo"/>
-                <p>
-                    2+2={2 + 2}
-                </p>
-                <a
-                    className="App-link"
-                    href="https://reactjs.org"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Learn React
-                </a>
-            </header>
+            <p>randFloat={("" + randFloat).slice(0, 4)}</p>
+            <h1>hello react :3c</h1>
+            <Person {...personProps}/>
         </div>
     );
 }
