@@ -1,11 +1,24 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './App.css';
 
 const Counter = () => {
 
     var initialNumber = 0
 
+    //lets us have state
     const [counter, setCounter] = useState(initialNumber)
+
+    //run on counter change
+    useEffect(() => {
+            console.log("counter is now " + counter)
+
+            if ((Math.abs(counter) % 10 == 0) && (counter !== 0)) {
+                alert("wow! big number! its divisible by 10!")
+            }
+        },
+        [counter]
+    );
+
     return (
         <>
 
@@ -19,6 +32,12 @@ const Counter = () => {
                 setCounter(counter + 1)
             }}>
                 +
+            </button>
+            <br/>
+            <button onClick={() => {
+                setCounter(initialNumber)
+            }}>
+                Reset
             </button>
 
         </>
