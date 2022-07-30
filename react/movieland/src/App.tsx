@@ -29,9 +29,10 @@ const CodeBlock = (props: any) => {
 
 const App = () => {
 
-    const [moviesResponse, setMoviesResponse] = useState<any>([])
-
     const defaultSearch = 'iron man'
+
+    const [moviesResponse, setMoviesResponse] = useState<any>([])
+    const [searchTerm, setSearchTerm] = useState<string>(defaultSearch)
 
 
     const searchMovies = async (title: string) => {
@@ -53,14 +54,14 @@ const App = () => {
             <div className={"search"}>
                 <input
                     placeholder={'Search for movies'}
-                    value={defaultSearch}
-                    onChange={() => {
-                    }}/>
+                    value={searchTerm}
+                    onChange={(event) => setSearchTerm(event.target.value)}
+                    onSubmit={(event) => searchMovies(searchTerm)}
+                />
                 <img
                     src={SearchIcon}
                     alt={"Search for movies"}
-                    onClick={() => {
-                    }}
+                    onClick={() => searchMovies(searchTerm)}
                 />
             </div>
 
