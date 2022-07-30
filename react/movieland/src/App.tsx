@@ -1,6 +1,7 @@
 import React, {useEffect} from "react";
 import './App.css'
 import SearchIcon from './search.svg'
+import MovieCard from "./MovieCard";
 
 const REACT_APP_OMDB_API_KEY = process.env.REACT_APP_OMDB_API_KEY
 
@@ -26,6 +27,8 @@ const CodeBlock = (props: any) => {
     </>
 }
 
+
+
 const App = () => {
 
 
@@ -39,7 +42,7 @@ const App = () => {
     }
 
     useEffect(() => {
-        var movieResponse = searchMovies('iron man')
+        // var movieResponse = searchMovies('iron man')
     }, [])
 
     return (
@@ -59,18 +62,10 @@ const App = () => {
                 />
             </div>
             <div className={'container'}>
-                <div className={'movie'}>
-                    <div>
-                        <p>
-                            {sampleMovie.Year}
-                        </p>
-                    </div>
-                    <div>
-                        <img src={sampleMovie.Poster}
-                             alt={sampleMovie.Title}/>
-                    </div>
-
-                </div>
+                <MovieCard {...sampleMovie}/>
+                <MovieCard {...sampleMovie}/>
+                <MovieCard {...sampleMovie}/>
+                <MovieCard {...sampleMovie}/>
             </div>
         </div>
     )
