@@ -5,9 +5,14 @@ import Homepage from './Homepage';
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
+function About() {
+    return <div>about</div>;
+}
+
 root.render(
   <React.StrictMode>
-    <Homepage />
+    <About />
   </React.StrictMode>
 );
 
