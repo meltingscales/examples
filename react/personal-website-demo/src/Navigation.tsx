@@ -5,8 +5,8 @@ import {Container, Nav, Navbar} from "react-bootstrap";
 
 const NavigationItem = (props: any) => (
     <>
-        <Link replace={true} to={props.href}>
-            <Nav.Link href={props.href}>{props.name}</Nav.Link>
+        <Link replace={true} to={props.href} className={"nav-link"}>
+            ~/{props.name}
         </Link>
     </>
 )
@@ -17,7 +17,7 @@ const Navigation = () =>
         <>
             <Navbar bg={'light'} expand={'sm'}>
                 <Container>
-                    <Navbar.Brand>Henry Post</Navbar.Brand>
+                    <Navbar.Brand href={"/"}>/home/HenryPost</Navbar.Brand>
                     <Navbar.Toggle aria-controls={"basic-navbar-nav"}/>
                     <Navbar.Collapse id={'basic-navbar-nav'}>
                         <Nav className={'me-auto'}>

@@ -1,5 +1,12 @@
+import GithubHealthAlert from "../component/GithubHealthAlert";
+
+
 const Blogs = () => {
-    return <div>blogs</div>;
+
+    return <>
+        <GithubHealthAlert/>
+        <div>blogs</div>
+    </>;
 }
 
 export default Blogs
