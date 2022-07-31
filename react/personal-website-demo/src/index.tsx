@@ -7,7 +7,7 @@ import Blogs from "./pages/Blogs";
 import Contact from "./pages/Contact";
 
 function NoPage() {
-    return null;
+    return <div>nopage!</div>;
 }
 
 export default function App() {
