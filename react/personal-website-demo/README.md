@@ -5,6 +5,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Notes
 
 - https://isotropic.co/react-multiple-pages/
+- https://medium.com/how-to-react/use-react-router-link-with-bootstrap-315a8b88e129
 
 ## Available Scripts
 
