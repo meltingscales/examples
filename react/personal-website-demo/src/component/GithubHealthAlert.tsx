@@ -38,4 +38,4 @@ const GithubHealthAlert = () => {
 
 }
 
-export  default  GithubHealthAlert
+export default GithubHealthAlert

@@ -7,7 +7,7 @@ const Layout = () => {
     return <>
         <Container>
             <Navigation/>
-            Hello! I am default layout :)
+            {/*Hello! I am default layout :)*/}
             <Container>
                 <Outlet/>
             </Container>

@@ -9,8 +9,8 @@ class GithubZenResponse {
 
     constructor(response: Response, responseText: string) {
         this.response = response
-        this.statusCode = response.status
         this.responseText = responseText
+        this.statusCode = response.status
         this.timestamp = new Date()
     }
 
@@ -31,8 +31,7 @@ class GithubZenResponse {
     asSuccessElt() {
         return <Container>
             <p>Github is online at {this.timestamp.toString()}!</p>
-            <br/>
-            <span>Quote: "{this.responseText}"</span>
+            <p>Quote: "{this.responseText}"</p>
         </Container>
     }
 

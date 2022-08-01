@@ -1,7 +1,8 @@
 import React from "react";
-import {BrowserRouter, Route, Link} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 import {Container, Nav, Navbar} from "react-bootstrap";
+import {Config} from "./Config";
 
 const NavigationItem = (props: any) => (
     <>
@@ -17,7 +18,7 @@ const Navigation = () =>
         <>
             <Navbar bg={'light'} expand={'sm'}>
                 <Container>
-                    <Navbar.Brand href={"/"}>/home/HenryPost</Navbar.Brand>
+                    <Navbar.Brand href={"/"}>/home/{Config.OWNER_NAME_NO_SPACE}</Navbar.Brand>
                     <Navbar.Toggle aria-controls={"basic-navbar-nav"}/>
                     <Navbar.Collapse id={'basic-navbar-nav'}>
                         <Nav className={'me-auto'}>
