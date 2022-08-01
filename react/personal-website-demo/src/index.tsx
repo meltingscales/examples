@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import Blog from "./pages/Blog";
 import Contact from "./pages/Contact";
 import GithubApp from "./pages/GithubApp";
+import {OWNER_NAME} from "./Config";
 
 function NoPage() {
     return <div>nopage!</div>;
@@ -36,6 +37,9 @@ export default function App() {
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
 );
+
+document.title = OWNER_NAME
+
 root.render(
     <React.StrictMode>
         <App/>

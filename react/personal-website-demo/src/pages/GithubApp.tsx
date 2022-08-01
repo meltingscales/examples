@@ -1,6 +1,6 @@
 import {Container} from "react-bootstrap";
 import GithubHealthAlert from "../component/GithubHealthAlert";
-import GithubProfileCard from "../component/GithubProfileCard";
+import GithubProfileApplet from "../component/GithubProfileApplet";
 
 function GithubBlogFiles() {
     return <>
@@ -13,9 +13,9 @@ function GithubBlogFiles() {
 const GithubApp = () => {
 
     return <>
-        {/*<GithubHealthAlert/>*/}
-        <GithubProfileCard/>
         <h1>{GithubApp.name} wip</h1>
+        <GithubHealthAlert/>
+        <GithubProfileApplet username={'henryfbp'}/>
         <GithubBlogFiles/>
     </>;
 }
