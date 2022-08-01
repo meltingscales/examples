@@ -7,6 +7,7 @@ import Blog from "./pages/Blog";
 import Contact from "./pages/Contact";
 import GithubApp from "./pages/GithubApp";
 import {OWNER_NAME} from "./Config";
+import About from "./pages/About";
 
 function NoPage() {
     return <div>nopage!</div>;
@@ -24,6 +25,8 @@ export default function App() {
                            element={<Blog/>}/>
                     <Route path={"contact"}
                            element={<Contact/>}/>
+                    <Route path={"about"}
+                           element={<About/>}/>
                     <Route path={"demoApps/githubApp"}
                            element={<GithubApp/>}/>
                     <Route
