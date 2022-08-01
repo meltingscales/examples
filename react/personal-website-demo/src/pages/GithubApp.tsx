@@ -1,6 +1,5 @@
-import GithubHealthAlert from "../component/GithubHealthAlert";
 import {Container} from "react-bootstrap";
-
+import GithubHealthAlert from "../component/GithubHealthAlert";
 
 function GithubBlogFiles() {
     return <>
@@ -10,14 +9,14 @@ function GithubBlogFiles() {
     </>
 }
 
-const Blogs = () => {
+const GithubApp = () => {
 
     return <>
         <GithubHealthAlert/>
-        <h1>blogs</h1>
+        <h1>{GithubApp.name} wip</h1>
         <GithubBlogFiles/>
     </>;
 }
 
-export default Blogs
+export default GithubApp
 
