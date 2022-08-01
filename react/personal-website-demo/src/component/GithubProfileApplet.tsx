@@ -2,12 +2,12 @@ import {GithubService} from "../service/GithubService";
 import {useEffect, useState} from "react";
 import {Card} from "react-bootstrap";
 
-function GithubProfileCard(props: { data: any }) {
+function GithubProfileCard(props: any) {
 
     return <>
         <Card style={{width: '200px'}}>
-            <Card.Img src={props.data.avatar_url}></Card.Img>
-            <p>{props.data.bio}</p>
+            <Card.Img src={props.avatar_url}></Card.Img>
+            <p>{props.bio}</p>
         </Card>
     </>
 }
@@ -39,7 +39,7 @@ const GithubProfileApplet = (props: { username: string }) => {
     }
 
     return <>
-        <GithubProfileCard data={ghProfileData}/>
+        <GithubProfileCard {...ghProfileData}/>
     </>
 }
 
