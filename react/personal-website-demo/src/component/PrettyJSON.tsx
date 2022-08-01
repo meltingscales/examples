@@ -1,12 +1,25 @@
-import {Container} from "react-bootstrap";
-import exp from "constants";
+const PrettyJSON = (props:
+                        {
+                            name: string,
+                            data: ({} | string)
+                        }
+) => {
 
-const PrettyJSON = (props: { data: {} }) => {
+    var theObj = props.data
+
+    if (typeof (theObj) === 'string') {
+        theObj = JSON.parse(theObj)
+    }
+
+    var prettyString = JSON.stringify(theObj, null, 2)
 
     return (
-        <>
-            <pre><code>{JSON.stringify(props.data)}</code></pre>
-        </>
+        <details>
+            <summary>
+                {PrettyJSON.name}: {props.name}
+            </summary>
+            <pre><code>{prettyString}</code></pre>
+        </details>
     )
 }
 export default PrettyJSON;

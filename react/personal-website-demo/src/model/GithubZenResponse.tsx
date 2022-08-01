@@ -20,11 +20,11 @@ class GithubZenResponse {
 
     asErrorElt() {
 
-        var respText = this.responseText
+        var respObject = JSON.parse(this.responseText)
 
         return <Container>
             <p>Status code: {this.statusCode}</p>
-            <PrettyJSON data={respText}/>
+            <PrettyJSON data={respObject} name={"/zen"}/>
         </Container>
     }
 
