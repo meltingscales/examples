@@ -36,11 +36,13 @@ const Navigation = () =>
                             <NavigationItem href={"/blog"} name={"blog"}/>
                             <NavigationItem href={"/contact"} name={"contact"}/>
                             <Dropdown>
-                                <Dropdown.Toggle  id={'dropdown-basic'}>
+                                <Dropdown.Toggle id={'dropdown-basic'}>
                                     ~/demoApps/
                                 </Dropdown.Toggle>
                                 <Dropdown.Menu>
-                                    <NavigationItem href={"/demoApps/githubApp/"} name={"githubApp"} customText={'githubApp/'}/>
+                                    <NavigationItem href={"/demoApps/githubApp/"}
+                                                    name={"githubApp"}
+                                                    customName={'githubApp/'}/>
                                 </Dropdown.Menu>
                             </Dropdown>
                         </Nav>

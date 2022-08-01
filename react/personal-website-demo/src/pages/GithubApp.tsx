@@ -1,5 +1,6 @@
 import {Container} from "react-bootstrap";
 import GithubHealthAlert from "../component/GithubHealthAlert";
+import GithubProfileCard from "../component/GithubProfileCard";
 
 function GithubBlogFiles() {
     return <>
@@ -12,7 +13,8 @@ function GithubBlogFiles() {
 const GithubApp = () => {
 
     return <>
-        <GithubHealthAlert/>
+        {/*<GithubHealthAlert/>*/}
+        <GithubProfileCard/>
         <h1>{GithubApp.name} wip</h1>
         <GithubBlogFiles/>
     </>;
