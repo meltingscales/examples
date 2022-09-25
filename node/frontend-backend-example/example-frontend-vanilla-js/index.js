@@ -21,7 +21,9 @@ function fetchRandomNumbers() {
         //an unordered list 
         eltNumbersList = document.createElement("ul")
 
+        //go through all numbers
         for (const number of jsonResponse.numbers) {
+
             //a list item, a single number
             eltSingleNumber = document.createElement("li")
 
