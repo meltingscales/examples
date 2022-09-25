@@ -29,7 +29,10 @@ app.get('/randomNumbers', function (req, res) {
         randNums.push(randomBetweenOneAndTen)
     }
 
-    res.send("Hello, your lucky numbers are: " + randNums)
+    res.json({
+        message: "Hello, your lucky numbers are:",
+        numbers: randNums
+    })
 })
 
 
