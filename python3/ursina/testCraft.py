@@ -1,5 +1,4 @@
 # https://www.youtube.com/watch?v=DHSRaVeQxIk
-from re import I
 from ursina import *
 
 app = Ursina()
