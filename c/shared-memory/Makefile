@@ -4,7 +4,7 @@ clean:
 	rm -f *.o
 
 compile:
-	gcc fibonacci.c -o fibonacci
+	gcc fibonacci.c -o fibonacci.o
 
 test:
-	./fibonacci
+	./fibonacci.o
