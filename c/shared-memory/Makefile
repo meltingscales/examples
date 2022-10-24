@@ -4,7 +4,10 @@ clean:
 	rm -f *.o
 
 compile:
-	gcc fibonacci.c -o fibonacci.o
+	gcc fibonacciSharedMem.c -o fibonacciSharedMem.o
 
 test:
-	./fibonacci.o
+	./fibonacciSharedMem.o 15
+
+testPotato:
+	./fibonacciSharedMem.o potato
