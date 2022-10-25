@@ -84,15 +84,22 @@ int main(int argc, char **argv) {
     }
 
     //make shared memory
-    const size_t SHMEM_SIZE = (sizeof(int) * someFibonacciNumbers_SIZE);
-    void *shmem = create_shared_memory(SHMEM_SIZE);
+    const int SHMEM_SIZE = (sizeof(int) * someFibonacciNumbers_SIZE);
+    int *shmem = create_shared_memory(SHMEM_SIZE);
     printf("Created shared memory\n");
 
     //copy fibonacci numbers to shared memory
     for (size_t i = 0; i < someFibonacciNumbers_SIZE; ++i) {
-        memset(shmem + i, someFibonacciNumbers[i], sizeof(int));
+        memset(shmem + i, someFibonacciNumbers[i], sizeof(size_t));
     }
     printf("Copied fibonacci numbers to shared memory\n");
+
+    //show shared memory
+    printf("Shared memory:\n");
+    for (size_t i = 0; i < someFibonacciNumbers_SIZE; i++) {
+        int shmem_value = shmem[i];
+        printf("shmem[%zu] = %d\n", i, shmem_value);
+    }
 
     free(someFibonacciNumbers);
     printf("Freed fibonacci numbers\n");
