@@ -84,9 +84,15 @@ int main(int argc, char **argv) {
     }
 
     //make shared memory
-    const int SHMEM_SIZE = (sizeof(int) * someFibonacciNumbers_SIZE);
+    const size_t SHMEM_SIZE = (sizeof(int) * someFibonacciNumbers_SIZE);
     int *shmem = create_shared_memory(SHMEM_SIZE);
     printf("Created shared memory\n");
+
+    //zero shared memory
+    for (size_t i = 0; i < SHMEM_SIZE; i++) {
+        shmem[i] = (int) 0;
+    }
+    printf("Zeroed shared memory\n");
 
     //copy fibonacci numbers to shared memory
     for (size_t i = 0; i < someFibonacciNumbers_SIZE; ++i) {
@@ -130,7 +136,7 @@ int main(int argc, char **argv) {
 
         int myFunnyMemeNumber = 420;
 
-        memcpy(shmem + ((size_t) (SHMEM_SIZE / 2)), myFunnyMemeNumber, sizeof(int));
+        shmem[SHMEM_SIZE / 2] = myFunnyMemeNumber;
 
         printf("lol. lmao. weed.");
         printf("Goodbye from Parent!");
