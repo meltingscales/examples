@@ -36,7 +36,7 @@ int fibonacciRecursive(int nthNum) {
 int *generate_da_fibonacci(int howBig) {
     int *theNumbers = malloc(sizeof(int) * howBig);
 
-    for (int i = 0; i < howBig; ++i) {
+    for (size_t i = 0; i < howBig; ++i) {
         theNumbers[i] = fibonacciRecursive(i);
     }
 
@@ -69,15 +69,64 @@ int main(int argc, char **argv) {
         return 1;
     }
 
-    const int tenFib_SIZE = cliArgNum; //god i love c T_T
+    if (cliArgNum <= 0) {
+        printf("Error! Number must be > 0!\n");
+        return 1;
+    }
 
-    int *tenFib = generate_da_fibonacci(tenFib_SIZE);
+    const int someFibonacciNumbers_SIZE = cliArgNum; //god i love c T_T
 
-    const int SHMEM_SIZE = 128;
-//    void *shmem = create_
+    //make some fib numbers
+    int *someFibonacciNumbers = generate_da_fibonacci(someFibonacciNumbers_SIZE);
+    printf("Made %d fibonacci numbers:\n", someFibonacciNumbers_SIZE);
+    for (size_t i = 0; i < someFibonacciNumbers_SIZE; ++i) {
+        printf("  %2zu fib = %d\n", i, *(someFibonacciNumbers + i));
+    }
 
-    for (int i = 0; i < tenFib_SIZE; i++) {
-        printf("%dth fib num = %d\n", i, tenFib[i]);
+    //make shared memory
+    const size_t SHMEM_SIZE = (sizeof(int) * someFibonacciNumbers_SIZE);
+    void *shmem = create_shared_memory(SHMEM_SIZE);
+    printf("Created shared memory\n");
+
+    //copy fibonacci numbers to shared memory
+    for (size_t i = 0; i < someFibonacciNumbers_SIZE; ++i) {
+        memset(shmem + i, someFibonacciNumbers[i], sizeof(int));
+    }
+    printf("Copied fibonacci numbers to shared memory\n");
+
+    free(someFibonacciNumbers);
+    printf("Freed fibonacci numbers\n");
+
+    //above this line, we are parent.
+    //after this line, we could be either parent or child.
+    int pid = fork();
+    printf("Forked! My PID is %d\n", pid);
+
+    if (pid == 0) {
+        //we are child
+        printf("Hello from child! Sleeping...\n");
+        //wait for parent to mess it up
+        sleep(3);
+
+        for (size_t i = 0; i < someFibonacciNumbers_SIZE; i++) {
+            int onenum = ((int *) (shmem))[i];
+            printf("%zuth fib num = %d\n", i, onenum);
+        }
+        printf("Goodbye from Child!");
+
+    } else {
+        //we are parent
+        printf("Hello from parent!\n");
+
+        //let's mess up the fib numbers :)
+        //put a 420 in the middle
+
+        int myFunnyMemeNumber = 420;
+
+        memcpy(shmem + ((size_t) (SHMEM_SIZE / 2)), myFunnyMemeNumber, sizeof(int));
+
+        printf("lol. lmao. weed.");
+        printf("Goodbye from Parent!");
     }
 
 }

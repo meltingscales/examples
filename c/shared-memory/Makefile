@@ -9,5 +9,16 @@ compile:
 test:
 	./fibonacciSharedMem.o 15
 
+testCases: clean compile testPotato testOverflow testUnderflow testZero
+
 testPotato:
-	./fibonacciSharedMem.o potato
+	-./fibonacciSharedMem.o potato
+
+testOverflow:
+	-./fibonacciSharedMem.o 9999999
+
+testUnderflow:
+	-./fibonacciSharedMem.o -9999999
+
+testZero:
+	-./fibonacciSharedMem.o 0
