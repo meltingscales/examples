@@ -1,15 +1,15 @@
-all: clean compile test
+all: clean build test
 
 clean:
 	rm -f *.o
 
-compile:
+build:
 	gcc fibonacciSharedMem.c -o fibonacciSharedMem.o
 
-test:
+test: build
 	./fibonacciSharedMem.o 15
 
-testCases: clean compile testPotato testOverflow testUnderflow testZero
+testCases: clean build testPotato testOverflow testUnderflow testZero
 
 testPotato:
 	-./fibonacciSharedMem.o potato
