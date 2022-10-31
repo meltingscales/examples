@@ -4,7 +4,7 @@ clean:
 	rm -f *.o
 
 build:
-	gcc fibonacciSharedMem.c -o fibonacciSharedMem.o
+	gcc -g fibonacciSharedMem.c -o fibonacciSharedMem.o
 
 test: build
 	./fibonacciSharedMem.o 15
