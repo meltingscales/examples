@@ -17,3 +17,7 @@ how to share memory across processes :3c
 ## testing
 
     make testCases
+
+## debug
+
+You should run "test" target in CLion with GDB
