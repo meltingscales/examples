@@ -37,9 +37,23 @@ if [ -e $FILES1 -a -e $FILES2 ]; then
     if [ ! -e $MERGED_FILE ]; then
         echo "Creating $MERGED_FILE as it does not exist..."
 
+        echo "Normalizing MP4 presentation timestamps..."
+    
+        #display info about file s1 and s2 - where I got 12288 from
+        ffmpeg -i $FILES1
+        ffmpeg -i $FILES2
+
+        if [ ! -e $FILES1.normalized.mp4 ]; then
+            ffmpeg -i $FILES1 -vf setdar=16/9 -video_track_timescale 12288 -ac 1 -ar 48000 $FILES1.normalized.mp4
+        fi
+
+        if [ ! -e $FILES2.normalized.mp4 ]; then
+            ffmpeg -i $FILES2 -vf setdar=16/9 -video_track_timescale 12288 -ac 1 -ar 48000 $FILES2.normalized.mp4
+        fi
+
         echo -n "" > input.txt
-        echo    "file '$FILES1'" >> input.txt
-        echo -n "file '$FILES2'" >> input.txt
+        echo    "file '$FILES1.normalized.mp4'" >> input.txt
+        echo -n "file '$FILES2.normalized.mp4'" >> input.txt
         ffmpeg -f concat -i input.txt -codec copy $MERGED_FILE
     fi
 fi

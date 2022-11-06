@@ -1,2 +1,2 @@
-file 'intoTheCloudSeasonOne.mp4'
-file 'intoTheCloudSeasonTwo.mp4'
+file 'intoTheCloudSeasonOne.mp4.normalized.mp4'
+file 'intoTheCloudSeasonTwo.mp4.normalized.mp4'
