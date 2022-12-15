@@ -68,4 +68,18 @@ temp2
 
 (seq? (seq temp-vector)) ;;but we can make a vec a seq
 
+(second temp-vector) ;; => 2
+
+
+(hash-map "a" 1
+          "b" 2)
+
+(def temp-map
+  {:strings [1 2 {"a" "b"}]
+   :some-key :some-value
+   :nested-thing {:another-key "value"}})
+
+temp-map
+
+
 
