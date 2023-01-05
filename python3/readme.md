@@ -1,5 +1,8 @@
 # Setup:
 
+## Notes
+
+This is a relatively old and unorganized repo. Some of these examples may use the Pipfile in this folder, and some are nested, so the steps below may need to be modified slightly.
 
 ## Links
 
