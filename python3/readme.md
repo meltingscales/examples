@@ -1,18 +1,20 @@
-# SETUP INSTRUCTIONS (Sorry):
+# Setup:
 
-## Q:  Why are there setup instructions?! Isn't this supposed to be simple?!
 
-A: 	I have a crapload of dependencies you need to have to run some of these
-examples. Sorry.
+## Links
 
-## Tell me already!
+https://www.python.org/downloads/
+
+https://pypi.org/project/pip/
+
+https://pipenv.pypa.io/en/latest/
+
+## Steps
 
 1. 	Install Python >=3.6
 2.	In this directory, run `pip install pipenv`.
-3.  In this directory, run `pipenv install`.
+3.  	In this directory, run `pipenv install`.
 	- This will install all required deps from a file called `Pipfile`.
 	- Feel free to open `Pipfile` to see what goofy libs I'm forcing you to 
 		download.
-4. 	To run a python script PROPERLY, use `pipenv run python myfile.py`.
-5.	???
-6. 	profit
+4. 	To run a python script properly with Pipenv, use `pipenv run python myfile.py`.
