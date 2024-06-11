@@ -1,3 +1,9 @@
+"""
+This script generates 20 excel files with random data. Each excel file contains a list
+of 4 farmers and the number of apples they have. 
+The excel files are saved in the data folder.
+"""
+
 import pandas as pd
 import numpy as np
 import os
