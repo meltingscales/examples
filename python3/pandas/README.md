@@ -1,3 +1,7 @@
+# pandas simple example
+
+The goals of this pandas example is shown below.
+
 NOTE: All removed rows should be placed into a separate DataFrame.
 
 1.  Combine `A` and `B` into `C` by concatenation.
