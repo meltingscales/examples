@@ -137,15 +137,15 @@ class MandelDisplay(BetterLabel):
         half_width = (self.x[1] - self.x[0]) / 2
         half_height = (self.y[1] - self.y[0]) / 2
 
-        # Scale the distances by the zoom factor
-        if factor < 1:
-            # Zooming in
+        # Update half_width and half_height based on the zoom factor
+        if factor > 1:
+            # Zooming out
             new_half_width = half_width * factor
             new_half_height = half_height * factor
         else:
-            # Zooming out
-            new_half_width = half_width / factor
-            new_half_height = half_height / factor
+            # Zooming in
+            new_half_width = half_width / abs(factor)
+            new_half_height = half_height / abs(factor)
 
         # Apply the new distances to calculate new coordinates
         self.x = [mid_x - new_half_width, mid_x + new_half_width]
