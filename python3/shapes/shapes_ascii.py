@@ -128,48 +128,31 @@ class MandelDisplay(BetterLabel):
         self.y[0] += -(y * mult)
         self.y[1] += -(y * mult)
 
-    def zoombad(self, factor: float):
-        """Flawed zoom.
-        Biased towards [0,0].
-        A result of my laziness ;) """
- 
-        if factor == 0.0:
-            factor = 1.0
-
-        if factor > 0.0:
-            self.x[0] *= factor
-            self.x[1] *= factor
-
-            self.y[0] *= factor
-            self.y[1] *= factor
-        else:
-            factor = -factor  # Don't want to flip our coords around!
-
-            self.x[0] /= factor
-            self.x[1] /= factor
-
-            self.y[0] /= factor
-            self.y[1] /= factor
-
     def zoom(self, factor: float):
-        mid = midpoint((self.x[0],self.y[0]), (self.x[1],self.y[1]))
+        # Calculate the midpoint of the current view
+        mid_x = (self.x[0] + self.x[1]) / 2
+        mid_y = (self.y[0] + self.y[1]) / 2
 
-        p1, p2 = ((self.x[0], self.y[0]), (self.x[1], self.y[1]))
-        
-        print(f'midpoint of {p1} and {p2} is {mid}.')
+        # Calculate the distance from the midpoint to the edges
+        half_width = (self.x[1] - self.x[0]) / 2
+        half_height = (self.y[1] - self.y[0]) / 2
 
-        mid1 = midpoint(p1, mid)
-        mid2 = midpoint(p2, mid)
-
-        print(mid1)
-        print(mid2)
-
-        if(factor <= 1): # TODO fix this and have factor var scale the actual zooming factor
-            self.x[0], self.y[0] = list(mid1)
-            self.x[1], self.y[1] = list(mid2)
+        # Update half_width and half_height based on the zoom factor
+        if factor > 1:
+            # Zooming out
+            new_half_width = half_width * factor
+            new_half_height = half_height * factor
         else:
-            self.x[0], self.y[0] = addpoint(mid1, p1) # TODO the zoom-out is biased AGAINST 0,0 now... :'(
-            self.x[1], self.y[1] = addpoint(mid2, p2)
+            # Zooming in
+            new_half_width = half_width / abs(factor)
+            new_half_height = half_height / abs(factor)
+
+        # Apply the new distances to calculate new coordinates
+        self.x = [mid_x - new_half_width, mid_x + new_half_width]
+        self.y = [mid_y - new_half_height, mid_y + new_half_height]
+
+        # Generate the new Mandelbrot set with updated coordinates
+        self.generate_mandelbrot()
 
 
 class MandelControls(Widget):
