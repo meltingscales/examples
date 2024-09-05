@@ -9,6 +9,12 @@ loans = {
 
     # "Fifth Third TBD"
     # "Chase TBD"
+
+    'GreenState 5.99% with no points (20% down)': {
+        'loan_amount': 420000,
+        'monthly_payment': 2515.41,
+        'interest_rate': 5.99 / 100,
+    },
     'GreenState 6.125% (20% down)': {
         'loan_amount': 420000,
         'monthly_payment': 2551.96,
