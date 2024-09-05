@@ -5,6 +5,10 @@ loans = {
     #     'monthly_payment': 2515.41,
     #     'interest_rate': 5.99 / 100,
     # }, # disabled as it has points, I don't want that
+
+
+    # "Fifth Third TBD"
+    # "Chase TBD"
     'GreenState 6.125% (20% down)': {
         'loan_amount': 420000,
         'monthly_payment': 2551.96,
