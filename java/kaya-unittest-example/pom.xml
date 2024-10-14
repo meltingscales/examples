@@ -82,7 +82,7 @@
           </executions>
           <configuration>
             <!-- this will cause this specific class' main to get run -->
-            <mainClass>net.kayarocks.banking.App</mainClass>
+<!--            <mainClass>net.kayarocks.banking.App</mainClass>-->
           </configuration>
         </plugin>
         <plugin>
