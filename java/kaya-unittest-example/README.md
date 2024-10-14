@@ -10,4 +10,5 @@ I generated this skeleton by doing this:
 
 ## Running unit tests
 
-    mvn test
+    mvn clean jacoco:prepare-agent install jacoco:report
+    xdg-open target/site/jacoco/index.html

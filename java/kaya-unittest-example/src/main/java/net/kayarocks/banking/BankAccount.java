@@ -23,6 +23,10 @@ public class BankAccount {
         }
     }
 
+    public String report() {
+        return "Account Holder: " + accountHolder + "\nBalance: " + balance;
+    }
+
     // withdraw money from the account
     public void withdraw(double amount) {
         if (amount > 0 && amount <= balance) {

@@ -22,7 +22,7 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.11</version>
+      <version>4.12</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -85,26 +85,26 @@
             <mainClass>net.kayarocks.banking.App</mainClass>
           </configuration>
         </plugin>
-        <!-- this plugin -->
         <plugin>
           <groupId>org.jacoco</groupId>
           <artifactId>jacoco-maven-plugin</artifactId>
           <version>0.8.7</version>
           <executions>
-              <execution>
-                  <goals>
-                      <goal>prepare-agent</goal>
-                  </goals>
-              </execution>
-              <execution>
-                  <id>report</id>
-                  <phase>test</phase>
-                  <goals>
-                      <goal>report</goal>
-                  </goals>
-              </execution>
+            <execution>
+              <id>default-prepare-agent</id>
+              <goals>
+                <goal>prepare-agent</goal>
+              </goals>
+            </execution>
+            <execution>
+              <id>report</id>
+              <phase>test</phase>
+              <goals>
+                <goal>report</goal>
+              </goals>
+            </execution>
           </executions>
-      </plugin>
+        </plugin>
       </plugins>
     </pluginManagement>
   </build>
