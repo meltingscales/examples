@@ -4,8 +4,8 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.example</groupId>
-  <artifactId>kaya-unittest-example</artifactId>
+  <groupId>net.kayarocks</groupId>
+  <artifactId>banking-client</artifactId>
   <version>1.0-SNAPSHOT</version>
 
   <name>kaya-unittest-example</name>
@@ -81,10 +81,30 @@
             </execution>
           </executions>
           <configuration>
-            <!-- this will cause this class to get run -->
-            <mainClass>net.kayarocks.App</mainClass>
+            <!-- this will cause this specific class' main to get run -->
+            <mainClass>net.kayarocks.banking.App</mainClass>
           </configuration>
         </plugin>
+        <!-- this plugin -->
+        <plugin>
+          <groupId>org.jacoco</groupId>
+          <artifactId>jacoco-maven-plugin</artifactId>
+          <version>0.8.7</version>
+          <executions>
+              <execution>
+                  <goals>
+                      <goal>prepare-agent</goal>
+                  </goals>
+              </execution>
+              <execution>
+                  <id>report</id>
+                  <phase>test</phase>
+                  <goals>
+                      <goal>report</goal>
+                  </goals>
+              </execution>
+          </executions>
+      </plugin>
       </plugins>
     </pluginManagement>
   </build>
