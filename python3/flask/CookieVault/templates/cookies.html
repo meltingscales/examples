@@ -1,0 +1,6 @@
+<h1>Cookie Bakery</h1>
+<ul>
+    {% for cookie in cookies %}
+        <li>{{ cookie[1] }} - ${{ cookie[2] }} (Stock: {{ cookie[3] }})</li>
+    {% endfor %}
+</ul>
