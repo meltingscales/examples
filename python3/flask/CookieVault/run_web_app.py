@@ -37,12 +37,13 @@ def update_stock():
 
     conn = sqlite3.connect('bakery.db')
     c = conn.cursor()
-    c.execute('UPDATE cookies SET stock = ? WHERE id = ?', (new_stock, cookie_id))
+    # Vulnerable to SQL injection
+    query = f"UPDATE cookies SET stock = {new_stock} WHERE id = {cookie_id}"
+    c.execute(query)
     conn.commit()
     conn.close()
 
     return redirect(url_for('show_cookies'))
-
 
 if __name__ == '__main__':
     app.run(debug=True)
