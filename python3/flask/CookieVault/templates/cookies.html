@@ -1,6 +1,24 @@
 <h1>Cookie Bakery</h1>
 <ul>
     {% for cookie in cookies %}
-        <li>{{ cookie[1] }} - ${{ cookie[2] }} (Stock: {{ cookie[3] }})</li>
+        <li>id={{cookie[0]}} {{ cookie[1] }} - ${{ cookie[2] }} (Stock: {{ cookie[3] }})</li>
     {% endfor %}
 </ul>
+
+<div>
+    <h2>Sales Log</h2>
+    <ul>
+        {% for sale in sales %}
+            <li>Sale ID: {{ sale[0] }} | Cookie ID: {{ sale[1] }} | Quantity: {{ sale[2] }} | Date: {{ sale[3] }} | Profit: ${{ sale[4] }}</li>
+        {% endfor %}
+    </ul>
+</div>
+
+<h2>Update Cookie Stock</h2>
+<form action="/update_stock" method="post">
+    <label for="cookie_id">Cookie ID:</label>
+    <input type="number" id="cookie_id" name="cookie_id" required>
+    <label for="new_stock">New Stock:</label>
+    <input type="number" id="new_stock" name="new_stock" required>
+    <button type="submit">Update Stock</button>
+</form>
