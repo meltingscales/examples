@@ -1,7 +1,18 @@
 from flask import Flask, render_template, request, redirect, url_for
 import sqlite3
 
+SESSION_ID = "static-session-id-12345"
+
 app = Flask(__name__)
+
+# This function is called before every request
+# This makes the app vulnerable to CSRF attacks because it allows malicious javascript to make requests to any endpoint outside of the app
+@app.after_request
+def add_cors_headers(response):
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    response.headers['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS'
+    response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
+    return response
 
 
 def get_cookies() -> list[tuple]:
@@ -37,7 +48,8 @@ def show_cookies():
         'cookies.html',
         cookies=cookies,
         sales=sales,
-        comments=comments
+        comments=comments,
+        session_id=SESSION_ID,
     )
 
 @app.route('/update_stock', methods=['POST'])

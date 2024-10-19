@@ -1,16 +1,15 @@
 <h1>Cookie Bakery</h1>
 
-        <div>
-<h2>Cookie stock:</h2>
-<ul>
-    {% for cookie in cookies %}
-<li>id={{cookie[0]}} {{ cookie[1] }} - ${{ cookie[2] }} (Stock: {{ cookie[3] }})</li>
-    {% endfor %}
+<div>
+    <h2>Cookie stock:</h2>
+    <ul>
+        {% for cookie in cookies %}
+            <li>id={{cookie[0]}} {{ cookie[1] }} - ${{ cookie[2] }} (Stock: {{ cookie[3] }})</li>
+        {% endfor %}
         {% if not cookies %}
-        No cookies in stock.
+            No cookies in stock.
         {% endif %}
-
-</ul>
+    </ul>
 </div>
 
 <div>
@@ -42,7 +41,10 @@
     <h2>Comments</h2>
     <ul>
         {% for comment in comments %}
-            <li>{{ comment[1] }}</li>
+            <li>{{ comment[1]|safe }}</li>
         {% endfor %}
     </ul>
 </div>
+
+<!-- Hidden field to store the session ID -->
+<input type="hidden" id="session_id" value="{{ session_id }}">
