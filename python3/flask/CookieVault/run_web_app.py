@@ -60,7 +60,9 @@ def update_stock():
     conn = sqlite3.connect('bakery.db')
     c = conn.cursor()
     # Vulnerable to SQL injection
-    query = f"UPDATE cookies SET stock = {new_stock} WHERE id = {cookie_id}"
+    # i.e.
+    # 1; DELETE FROM cookies; DELETE FROM comments; DELETE FROM sales; --
+    query = "UPDATE cookies SET stock = " + str(new_stock) + " WHERE id = " + str(cookie_id)
     print("query", query)
     c.executescript(query)
     conn.commit()
@@ -74,7 +76,7 @@ def add_comment():
 
     conn = sqlite3.connect('bakery.db')
     c = conn.cursor()
-    # Insert the comment into the database without sanitization
+    # Insert the comment into the database with a prepared statement
     c.execute("INSERT INTO comments (text) VALUES (?)", (comment,))
     conn.commit()
     conn.close()
