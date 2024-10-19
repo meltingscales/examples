@@ -1,9 +1,17 @@
 <h1>Cookie Bakery</h1>
+
+        <div>
+<h2>Cookie stock:</h2>
 <ul>
     {% for cookie in cookies %}
-        <li>id={{cookie[0]}} {{ cookie[1] }} - ${{ cookie[2] }} (Stock: {{ cookie[3] }})</li>
+<li>id={{cookie[0]}} {{ cookie[1] }} - ${{ cookie[2] }} (Stock: {{ cookie[3] }})</li>
     {% endfor %}
+        {% if not cookies %}
+        No cookies in stock.
+        {% endif %}
+
 </ul>
+</div>
 
 <div>
     <h2>Sales Log</h2>
@@ -22,3 +30,19 @@
     <input type="number" id="new_stock" name="new_stock" required>
     <button type="submit">Update Stock</button>
 </form>
+
+<h2>Add Comment</h2>
+<form action="/add_comment" method="post">
+    <label for="comment">Comment:</label>
+    <input type="text" id="comment" name="comment" required>
+    <button type="submit">Add Comment</button>
+</form>
+
+<div>
+    <h2>Comments</h2>
+    <ul>
+        {% for comment in comments %}
+            <li>{{ comment[1] }}</li>
+        {% endfor %}
+    </ul>
+</div>

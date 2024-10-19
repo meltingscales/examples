@@ -4,6 +4,15 @@ import sqlite3
 conn = sqlite3.connect("bakery.db")
 c = conn.cursor()
 
+def create_comments():
+    """Create the comments table"""
+    c.execute(
+        """CREATE TABLE IF NOT EXISTS comments
+                 (id INTEGER PRIMARY KEY, text TEXT)"""
+    )
+    conn.commit()
+    print("Comments table created")
+
 
 def create_cookies():
     """Create the cookies table and add some data"""
@@ -66,3 +75,4 @@ def create_sales():
 if __name__ == "__main__":
     create_cookies()
     create_sales()
+    create_comments()
