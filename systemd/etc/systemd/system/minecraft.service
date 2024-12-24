@@ -1,0 +1,20 @@
+# enable: sudo systemctl daemon-reload
+# start: sudo systemctl enable minecraft
+
+# connect: screen -r minecraft
+# Detach from screen: Press Ctrl+A, then D.
+
+[Unit]
+Description=Minecraft Server
+After=network.target
+
+[Service]
+User=henry
+WorkingDirectory=/home/henry/neotech-1-7-0
+ExecStart=/usr/bin/screen -DmS minecraft /bin/bash /home/henry/neotech-1-7-0/run.sh
+ExecStop=/usr/bin/screen -S minecraft -X stuff "stop$(printf \\r)"
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
