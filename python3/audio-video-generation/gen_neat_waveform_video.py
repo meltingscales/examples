@@ -4,6 +4,12 @@ from scipy.io import wavfile
 from tqdm import tqdm
 import os
 import subprocess
+import shutil  # For checking if ffmpeg exists
+
+# Check if ffmpeg is installed
+if shutil.which("ffmpeg") is None:
+    raise FileNotFoundError("ffmpeg is not installed or not found in PATH. Please install it to proceed.")
+
 
 # Configuration
 audio_file = "audio.wav"  # Replace with your audio file path
