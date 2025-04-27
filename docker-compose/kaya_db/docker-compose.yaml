@@ -1,0 +1,30 @@
+services:
+
+  kaya_database:
+    image: mysql:8.0
+    container_name: kaya-mysql-db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: kayarocks
+      MYSQL_DATABASE: kaya_db
+      MYSQL_USER: kaya
+      MYSQL_PASSWORD: kayarocks
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+      # # Automatically initialize the database using sql scripts. the number orders the scripts' execution
+      # - ./create-db-tables.sql:/docker-entrypoint-initdb.d/51-create-db-tables.sql
+      # - ./create-db-triggers.sql:/docker-entrypoint-initdb.d/52-create-db-triggers.sql
+      # - ./create-db-inserts.sql:/docker-entrypoint-initdb.d/53-create-db-inserts.sql
+      # - ./create-db-procedures.sql:/docker-entrypoint-initdb.d/54-create-db-procedures.sql
+      # - ./create-db-views.sql:/docker-entrypoint-initdb.d/55-create-db-views.sql
+      # - ./create-db-functions.sql:/docker-entrypoint-initdb.d/56-create-db-functions.sql
+
+      # this is needed to allow the creation of stored procedures
+      # - ./mysql-cnf/60-trust-function-creators.cnf:/etc/mysql/mysql.conf.d/60-trust-function-creators.cnf
+    command:
+      - "--log-bin-trust-function-creators=1"
+volumes:
+  db_data:
