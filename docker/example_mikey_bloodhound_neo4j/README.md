@@ -10,7 +10,7 @@ See `./Makefile` and try to run targets. i.e.:
 # start the docker compose deployment, and attach stdout to current terminal. CTRL-C will stop the deployment gracefully.
 docker compose up
 
-# start dat shit detached from reality, yo :3c
+# start it detached
 docker compose up -d
 
 # see logs for all 3 containers.
