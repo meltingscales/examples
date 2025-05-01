@@ -58,10 +58,6 @@ docker compose logs -f
 # generic password
 # found in stdout
 # add a bang when you find it
-
-
-
 # Open in Terminal and run this
-
 # BloodHound
 ```
