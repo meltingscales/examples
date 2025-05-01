@@ -1,5 +1,7 @@
 COPIED FROM <https://github.com/SpecterOps/BloodHound/tree/main/examples/docker-compose>
 
+Make sure to save passwords from stdout to `PASSWORDS.txt` or something similar.
+
 See `./Makefile` and try to run targets. i.e.:
 
     make all
