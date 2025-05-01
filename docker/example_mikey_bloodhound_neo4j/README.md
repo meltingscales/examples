@@ -54,7 +54,7 @@ docker compose up -d
 docker compose logs -f
 
 ```
-
+```sh
 # generic password
 # found in stdout
 # add a bang when you find it
@@ -64,3 +64,4 @@ docker compose logs -f
 # Open in Terminal and run this
 
 # BloodHound
+```
