@@ -1,3 +1,5 @@
+import Data.List
+
 blankPieceName = "BLANK"
 blankPieceSprite = ' '
 blankPieceData = 0
@@ -41,18 +43,32 @@ makeMoveOnBoard board x y pieceData = (
     [0,0]) -- TODO
 
 renderBoard :: [Int] -> String
-renderBoard board = 
-    let sprites = map renderPieceDataToSprite board
+renderBoard board =
+  let
+    sprites = map renderPieceDataToSprite board
+    row1 = concatWithSeparator "|" (slice 0 2 sprites)
+    row2 = concatWithSeparator "|" (slice 3 5 sprites)
+    row3 = concatWithSeparator "|" (slice 6 8 sprites)
+    separator = "-----"
+  in
+    row1 ++ "\n" ++ separator ++ "\n" ++ row2 ++ "\n" ++ separator ++ "\n" ++ row3 ++ "\n"
 
-    -- format into rows with separators
-        row1 = slice 0 2 sprites
-        row2 = slice 3 5 sprites
-        row3 = slice 6 8 sprites
-        separator = "---"
-    in row1 ++ "\n" ++ separator ++ "\n" ++ row2 ++ "\n" ++ separator ++ "\n" ++ row3 ++ "\n"
+-- Helper function to concatenate a list of strings with a separator
+concatWithSeparator :: String -> [Char] -> String
+concatWithSeparator sep chars = intercalate sep (map (:[]) chars)
 
 -- Get a single piece on a board given x,y coordinates.
 getPieceOnBoard board x y = (board !! (calculateIndexOnBoard x y))
 
 -- transform x,y to index our board
 calculateIndexOnBoard x y = x + (3*y)
+
+
+{-
+
+TESTING
+
+:l ticTacToe
+putStrLn (renderBoard (generateSampleBoard))
+
+-}
