@@ -37,6 +37,8 @@ moreNumbers = [1, 2, 3, 4]
 -- ['w','o'] ++ ['o','t']
 -- "woot"
 
--- notice how the quotes are different. This `:` is the `cons` operator, just like in Lisp.
+-- notice how the quotes are different. 
+-- also, this `:` is the `cons` operator, just like in Lisp.
 smallCat = 'A' : " SMALL CAT"
 
+someChar = "Steve Buscemi" !! 6
