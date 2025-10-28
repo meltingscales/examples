@@ -1,0 +1,13 @@
+[project]
+name = "shapes"
+version = "0.1.0"
+description = "ASCII art and graphical shape visualization"
+dependencies = [
+    "numpy",
+    "joblib",
+    "asciimatics",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
