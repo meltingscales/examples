@@ -1,0 +1,2 @@
+default:
+    uv run python telloTest.py

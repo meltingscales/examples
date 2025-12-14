@@ -1,0 +1,11 @@
+[project]
+name = "drone"
+version = "0.1.0"
+description = "Tello EDU drone control"
+requires-python = ">=3.8"
+dependencies = [
+    "djitellopy==2.4.0",
+]
+
+[dependency-groups]
+dev = []
