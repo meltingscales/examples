@@ -1,0 +1,99 @@
+# Python Tutorial Examples - Command Reference
+# Install just: https://github.com/casey/just
+
+# List all available commands
+default:
+    @just --list
+
+# Set up the virtual environment and install dependencies
+setup:
+    uv venv
+    uv pip install pandas
+
+# Install dependencies only (assumes venv exists)
+install:
+    uv pip install pandas
+
+# Run a specific example (e.g., just run 01)
+run EXAMPLE:
+    uv run python {{EXAMPLE}}*.py
+
+# Run all examples in order
+run-all:
+    @echo "Running all examples..."
+    @for file in 0*.py; do \
+        echo "\n=== Running $$file ==="; \
+        uv run python "$$file"; \
+    done
+
+# Run example 1: Variables and types
+ex1:
+    uv run python 01_variables_and_types.py
+
+# Run example 2: Conditionals
+ex2:
+    uv run python 02_conditionals.py
+
+# Run example 3: Loops
+ex3:
+    uv run python 03_loops.py
+
+# Run example 4: Lists and dictionaries
+ex4:
+    uv run python 04_lists_and_dicts.py
+
+# Run example 5: CSV operations
+ex5:
+    uv run python 05_csv_operations.py
+
+# Run example 6: Introduction to pandas
+ex6:
+    uv run python 06_intro_to_pandas.py
+
+# Clean up generated files
+clean:
+    rm -f *.csv *.tsv
+    rm -rf __pycache__ .pytest_cache
+    rm -rf .venv
+
+# Clean everything including virtual environment
+clean-all: clean
+    rm -rf .venv
+
+# Show Python and package versions
+versions:
+    @echo "Python version:"
+    @uv run python --version
+    @echo "\nInstalled packages:"
+    @uv pip list
+
+# Start Python REPL with dependencies loaded
+repl:
+    uv run python
+
+# Format code with black (if you want to add it later)
+fmt:
+    uv run black *.py
+
+# Show help for beginners
+help:
+    @echo "Python Tutorial Examples"
+    @echo "========================"
+    @echo ""
+    @echo "Quick Start:"
+    @echo "  1. Install uv: curl -LsSf https://astral.sh/uv/install.sh | sh"
+    @echo "  2. Run: just setup"
+    @echo "  3. Run examples: just ex1, just ex2, etc."
+    @echo ""
+    @echo "Common Commands:"
+    @echo "  just setup      - Set up environment and install dependencies"
+    @echo "  just ex1        - Run example 1 (variables)"
+    @echo "  just ex2        - Run example 2 (conditionals)"
+    @echo "  just ex3        - Run example 3 (loops)"
+    @echo "  just ex4        - Run example 4 (lists & dicts)"
+    @echo "  just ex5        - Run example 5 (CSV files)"
+    @echo "  just ex6        - Run example 6 (pandas)"
+    @echo "  just run-all    - Run all examples"
+    @echo "  just clean      - Remove generated files"
+    @echo ""
+    @echo "For more commands, run: just --list"

@@ -1,0 +1,6 @@
+Date,Product,Quantity,Price,Region,Total,DayOfWeek
+2024-01-01,Laptop,2,999.99,East,1999.98,Monday
+2024-01-02,Mouse,5,25.5,West,127.5,Tuesday
+2024-01-03,Laptop,1,999.99,East,999.99,Wednesday
+2024-01-04,Keyboard,3,75.0,North,225.0,Thursday
+2024-01-05,Mouse,10,25.5,West,255.0,Friday
