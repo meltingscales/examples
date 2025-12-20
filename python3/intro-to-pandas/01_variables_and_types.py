@@ -4,12 +4,32 @@ Example 1: Variables and Basic Data Types
 This example introduces you to Python variables and the most common data types.
 """
 
+# Hi Milo!
+#
+# DEBUGGING IN ZED EDITOR
+# =======================
+# You can "pause" your code while it's running to see what's happening!
+# Click the "Gutter" (the left margin with line numbers) to set a "breakpoint" -
+# it shows as a red dot (●). When your code runs, it will pause at that line.
+#
+# Debugger Keybinds:
+#   CTRL-SHIFT-P     - Command Palette (then type "Debugger: Start", etc.)
+#   F4               - Start Debugger
+#   F5               - Run/Continue (go to next breakpoint)
+#   F7               - Step Over (run current line, move to next)
+#   CTRL-F11         - Step In (go inside a function call)
+#   Shift-F11        - Step Out (exit current function)
+#   CTRL-SHIFT-F5    - Rerun session
+#   SHIFT-F5         - Kill all threads (stop debugging)
+#
+# Try it: Set a breakpoint on line 40 below, press F4, then use F7 to step through!
+
 # Variables in Python don't need type declarations
 # Just assign a value and Python figures out the type!
 
 # Strings (text)
 name = "Alice"
-greeting = 'Hello, World!'  # Single or double quotes both work
+greeting = "Hello, World!"  # Single or double quotes both work
 print("String examples:")
 print(name)
 print(greeting)
@@ -49,7 +69,7 @@ print(f"{x} * {y} = {x * y}")  # Multiplication
 print(f"{x} / {y} = {x / y}")  # Division (always returns float)
 print(f"{x} // {y} = {x // y}")  # Integer division (rounds down)
 print(f"{x} % {y} = {x % y}")  # Modulo (remainder)
-print(f"{x} ** {y} = {x ** y}")  # Exponentiation
+print(f"{x} ** {y} = {x**y}")  # Exponentiation
 print()
 
 # You can check the type of any variable
