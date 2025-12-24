@@ -1,0 +1,12 @@
+[project]
+name = "synthetic-data"
+version = "0.1.0"
+description = "Generate synthetic Steam game sales data for analysis"
+requires-python = ">=3.8"
+dependencies = [
+    "pandas>=2.0.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

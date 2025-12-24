@@ -1,0 +1,47 @@
+# Justfile for synthetic-data project
+
+# Default recipe to display help
+default:
+    @just --list
+
+# Set up virtual environment
+venv:
+    uv venv
+
+# Install dependencies
+install:
+    uv pip install pandas
+
+# Set up everything (venv + install)
+setup: venv install
+    @echo "Setup complete! Virtual environment created and dependencies installed."
+
+# Run the synthetic data generator
+run:
+    .venv/bin/python KaggleSteamGames-Synth.py
+
+# Run with custom number of transactions
+run-custom n="10000":
+    .venv/bin/python -c "from KaggleSteamGames_Synth import generate_sales_data; generate_sales_data(num_transactions={{n}})"
+
+# Preview the generated data (first 20 lines)
+preview:
+    head -20 synthetic_steam_sales.csv
+
+# Show summary statistics
+stats:
+    @echo "File: synthetic_steam_sales.csv"
+    @echo "Total transactions: $(wc -l < synthetic_steam_sales.csv)"
+    @tail -n +2 synthetic_steam_sales.csv | cut -d',' -f11 | awk '{sum+=$1} END {printf "Total revenue: $%.2f\n", sum}'
+
+# Clean generated files
+clean:
+    rm -f synthetic_steam_sales.csv
+
+# Clean everything including venv
+clean-all: clean
+    rm -rf .venv
+
+# Regenerate the data
+regenerate: clean run
+    @echo "Data regenerated!"
